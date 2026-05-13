@@ -1,0 +1,18 @@
+[submodule "RRS"]
+	path = RRS
+	url = https://github.com/avilkinnick/RRS
+[submodule "chs2t"]
+	path = chs2t
+	url = https://github.com/avilkinnick/chs2t
+[submodule "ep1m"]
+	path = ep1m
+	url = https://github.com/avilkinnick/ep1m
+[submodule "tep70"]
+	path = tep70
+	url = https://github.com/avilkinnick/tep70
+[submodule "cisterns_pack"]
+	path = cisterns_pack
+	url = https://codeberg.org/avilkinnick/cisterns_pack
+[submodule "ra3"]
+	path = ra3
+	url = https://codeberg.org/avilkinnick/ra3
