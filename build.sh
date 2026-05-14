@@ -4,6 +4,9 @@
 BASE_DIR=$(dirname $0)
 cd $BASE_DIR
 
+# Set build type
+BUILD_TYPE=Debug
+
 # Delete sdk folder
 rm -rf sdk
 
@@ -15,7 +18,7 @@ git submodule update --init --recursive --remote
 cd RRS
 mkdir -p build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release \
+cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
       -DCMAKE_INSTALL_PREFIX=../.. \
       -Dvsg_DIR=~/Install/lib/cmake/vsg \
       -DvsgXchange_DIR=~/Install/lib/cmake/vsgXchange \
@@ -35,11 +38,12 @@ echo SDK_PATH: $SDK_PATH
 function build_dlc {
       DLC_NAME=$1
       cd $DLC_NAME
-      echo $PWD
+      # git fetch --all
+      # git pull
       mkdir -p build
       mkdir -p install
       cd build
-      cmake -DCMAKE_BUILD_TYPE=Release \
+      cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
             -DCMAKE_INSTALL_PREFIX=../install \
             -DCfgReader_DIR=$SDK_PATH/lib/cmake/CfgReader \
             -Ddevice_DIR=$SDK_PATH/lib/cmake/device \
