@@ -10,9 +10,9 @@ BUILD_TYPE=Debug
 # Delete sdk folder
 rm -rf sdk
 
-# Update all submodules
-git submodule sync --recursive
-git submodule update --init --recursive --remote
+# # Update all submodules
+# git submodule sync --recursive
+# git submodule update --init --recursive --remote
 
 # Build RRS sdk
 cd RRS
@@ -34,34 +34,9 @@ cd ../..
 SDK_PATH=$PWD/sdk
 echo SDK_PATH: $SDK_PATH
 
-# Function for building dlc
-function build_dlc {
-      DLC_NAME=$1
-      cd $DLC_NAME
-      # git fetch --all
-      # git pull
-      mkdir -p build
-      mkdir -p install
-      cd build
-      cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-            -DCMAKE_INSTALL_PREFIX=../install \
-            -DCfgReader_DIR=$SDK_PATH/lib/cmake/CfgReader \
-            -Ddevice_DIR=$SDK_PATH/lib/cmake/device \
-            -Ddisplay_DIR=$SDK_PATH/lib/cmake/display \
-            -Dfilesystem_DIR=$SDK_PATH/lib/cmake/filesystem \
-            -DJournal_DIR=$SDK_PATH/lib/cmake/Journal \
-            -Dphysics_DIR=$SDK_PATH/lib/cmake/physics \
-            -Dsolver_DIR=$SDK_PATH/lib/cmake/solver \
-            -Dvehicle_DIR=$SDK_PATH/lib/cmake/vehicle \
-            ..
-      cmake --build . -j16
-      cmake --install .
-      cd ../..
-}
-
 # Build all dlcs
-build_dlc chs2t
-build_dlc cisterns_pack
-build_dlc ep1m
-build_dlc ra3
-build_dlc tep70
+./build_dlc.sh chs2t $BUILD_TYPE
+./build_dlc.sh cisterns_pack $BUILD_TYPE
+./build_dlc.sh ep1m $BUILD_TYPE
+./build_dlc.sh ra3 $BUILD_TYPE
+./build_dlc.sh tep70 $BUILD_TYPE
