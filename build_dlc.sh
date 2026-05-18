@@ -18,6 +18,10 @@ cd $DLC_NAME
 mkdir -p build-$BUILD_TYPE
 mkdir -p install
 cd build-$BUILD_TYPE
+
+# Delete all CMake files from build directory (to delete cache)
+find . -type f,d -iname "*cmake*" -exec rm -rf {} +
+
 cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
       -DCMAKE_INSTALL_PREFIX=../install \
       -DCfgReader_DIR=$SDK_PATH/lib/cmake/CfgReader \
@@ -28,6 +32,7 @@ cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
       -Dphysics_DIR=$SDK_PATH/lib/cmake/physics \
       -Dsolver_DIR=$SDK_PATH/lib/cmake/solver \
       -Dvehicle_DIR=$SDK_PATH/lib/cmake/vehicle \
+      -Dcore_DIR=$SDK_PATH/lib/cmake/core \
       ..
 cmake --build . -j16
 echo "Finish building $DLC_NAME"

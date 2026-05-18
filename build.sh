@@ -35,8 +35,8 @@ SDK_PATH=$PWD/sdk
 echo SDK_PATH: $SDK_PATH
 
 # Build all dlcs
-./build_dlc.sh chs2t $BUILD_TYPE
-./build_dlc.sh cisterns_pack $BUILD_TYPE
-./build_dlc.sh ep1m $BUILD_TYPE
-./build_dlc.sh ra3 $BUILD_TYPE
-./build_dlc.sh tep70 $BUILD_TYPE
+# ./build_dlc.sh chs2t $BUILD_TYPE
+# ./build_dlc.sh cisterns_pack $BUILD_TYPE
+# ./build_dlc.sh ep1m $BUILD_TYPE
+# ./build_dlc.sh ra3 $BUILD_TYPE
+# ./build_dlc.sh tep70 $BUILD_TYPE
